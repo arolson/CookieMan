@@ -33,6 +33,7 @@ public class CookieMan extends ApplicationAdapter {
 	float sourceX = 0;
 
 	int score = 0;
+	int prevScore = 0;
 	int gameSpeed = 4;
 	int gameState = 0;
 	int lives = 3;
@@ -304,7 +305,7 @@ public class CookieMan extends ApplicationAdapter {
 		velocity = 0;
 		coinCount = 0;
 		bombCount = 0;
-		gameSpeed = 8;
+		gameSpeed = 4;
 		manY = screenHeight / 2;
 		coinsXs.clear();
 		coinYs.clear();
@@ -340,106 +341,35 @@ public class CookieMan extends ApplicationAdapter {
 	}
 	public int getSpeed() {
 		int speed = gameSpeed;
-		if (score < 10) {
-			speed = 4;
+		if (score > prevScore && score != 0 && score % 10 == 0) {
+			speed += 2;
+			prevScore = score;
 		}
-		if (score == 10) {
-			speed = 6;
-		}
-		if (score == 20) {
-			speed = 8;
-		}
-		if (score == 30) {
-			speed = 10;
-		}
-		if (score == 40) {
-			speed = 12;
-		}
-		if (score == 50) {
-			speed = 14;
-		}
-		if (score == 60) {
-			speed = 16;
-		}
-		if (score == 70) {
-			speed = 18;
-		}
-		if (score == 80) {
-			speed = 20;
-		}
-		if (score == 90) {
-			speed = 22;
-		}
+
 		return speed;
 	}
 
 	public int setBombCount() {
 		int bombs = 250;
-		if (score < 10) {
-			bombs = 250;
+		if (score > prevScore && score != 0 && score % 10 == 0) {
+			bombs -= 1;
+			if (bombs < 10) {
+				bombs = 10;
+			}
 		}
-		if (score >= 10) {
-			bombs = 249;
-		}
-		if (score >= 20) {
-			bombs = 248;
-		}
-		if (score >= 30) {
-			bombs = 247;
-		}
-		if (score >= 40) {
-			bombs = 246;
-		}
-		if (score >= 50) {
-			bombs = 245;
-		}
-		if (score >= 60) {
-			bombs = 243;
-		}
-		if (score >= 70) {
-			bombs = 242;
-		}
-		if (score >= 80) {
-			bombs = 241;
-		}
-		if (score >= 90) {
-			bombs = 240;
-		}
+
 		return bombs;
 	}
 
 	public int setCoinCount() {
 		int coins = 100;
-		if (score < 10) {
-			coins = 100;
+		if (score > prevScore && score != 0 && score % 10 == 0) {
+			coins -= 2;
+			if (coins < 10) {
+				coins = 10;
+			}
 		}
-		if (score == 10) {
-			coins = 98;
-		}
-		if (score == 20) {
-			coins = 96;
-		}
-		if (score == 30) {
-			coins = 94;
-		}
-		if (score == 40) {
-			coins = 92;
-		}
-		if (score == 50) {
-			coins = 90;
-		}
-		if (score == 60) {
-			coins = 88;
-		}
-		if (score == 70) {
-			coins = 86;
-		}
-		if (score == 80) {
-			coins = 84;
-		}
-		if (score == 90) {
-			coins = 82;
-		}
+
 		return coins;
 	}
 	public void drawStartScreen() {
