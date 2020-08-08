@@ -3,7 +3,6 @@ package net.andrewolson.cookieman;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -27,7 +26,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler {
 
 	Handler handler = new Handler() {
 		@Override
-		public void handleMessage(@NonNull Message msg) {
+		public void handleMessage(Message msg) {
 			switch (msg.what) {
 				case SHOW_ADS:
 					adView.setVisibility(View.VISIBLE);
@@ -56,7 +55,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler {
 				Log.i(TAG, "Ad Loaded");
 			}
 		});
-		MobileAds.initialize(this, "ca-app-pub-2987205406740022~3609049354");
+		MobileAds.initialize(this);
 		adView.setAdSize(AdSize.SMART_BANNER);
 		adView.setAdUnitId("ca-app-pub-2987205406740022/5937482184");
 		AdRequest.Builder builder = new AdRequest.Builder();
