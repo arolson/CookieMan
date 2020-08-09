@@ -76,7 +76,7 @@ public class CookieMan extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		pref = Gdx.app.getPreferences("net.andrewolson.coinman.game");
+		pref = Gdx.app.getPreferences("net.andrewolson.cookieman");
 		background = new Texture("bg.png");
 		background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
@@ -300,6 +300,7 @@ public class CookieMan extends ApplicationAdapter {
 
 	public void endGame() {
 		score = 0;
+		prevScore = 0;
 		lives = 3;
 		bombCollision = 0;
 		velocity = 0;
